@@ -63,109 +63,116 @@ const ContactForm = ({ initialData, onSubmit, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="light-form flex flex-col gap-6">
-      <div className="form-group">
-        <label className="text-gray-700 font-medium mb-2">Name:</label>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="form-group mb-0">
+        <label className="text-[11px] uppercase tracking-wider font-bold text-gray-400 mb-1 ml-1">Name</label>
         <input 
           type="text" 
           name="name" 
-          placeholder="Aaron"
-          className={`form-control-light ${errors.name ? 'border-red-500' : ''}`}
+          placeholder="e.g. Aaron"
+          className={`form-control-compact ${errors.name ? 'border-red-500' : ''}`}
           value={data.name} 
           onChange={handleChange} 
         />
         {errors.name && <p className="error-message">{errors.name}</p>}
       </div>
 
-      <div className="form-group">
-        <label className="text-gray-700 font-medium mb-2">Email:</label>
+      <div className="form-group mb-0">
+        <label className="text-[11px] uppercase tracking-wider font-bold text-gray-400 mb-1 ml-1">Email</label>
         <input 
           type="email" 
           name="email" 
-          placeholder="your@email.com"
-          className={`form-control-light ${errors.email ? 'border-red-500' : ''}`}
+          placeholder="name@example.com"
+          className={`form-control-compact ${errors.email ? 'border-red-500' : ''}`}
           value={data.email} 
           onChange={handleChange} 
         />
         {errors.email && <p className="error-message">{errors.email}</p>}
       </div>
 
-      <div className="form-group">
-        <label className="text-gray-700 font-medium mb-2">PhoneNumber:</label>
+      <div className="form-group mb-0">
+        <label className="text-[11px] uppercase tracking-wider font-bold text-gray-400 mb-1 ml-1">Phone</label>
         <input 
           type="text" 
           name="mobile" 
           placeholder="5785664545"
-          className={`form-control-light ${errors.mobile ? 'border-red-500' : ''}`}
+          className={`form-control-compact ${errors.mobile ? 'border-red-500' : ''}`}
           value={data.mobile} 
           onChange={handleChange} 
         />
         {errors.mobile && <p className="error-message">{errors.mobile}</p>}
       </div>
 
-      <div className="form-group">
-        <label className="text-gray-700 font-medium mb-2">Address:</label>
+      <div className="form-group mb-0">
+        <label className="text-[11px] uppercase tracking-wider font-bold text-gray-400 mb-1 ml-1">Address</label>
         <textarea 
           name="address" 
-          placeholder="Enter your Address"
-          rows="3"
-          className={`form-control-light ${errors.address ? 'border-red-500' : ''}`}
+          placeholder="Full address here..."
+          rows="2"
+          className={`form-control-compact ${errors.address ? 'border-red-500' : ''}`}
           value={data.address} 
           onChange={handleChange} 
         />
         {errors.address && <p className="error-message">{errors.address}</p>}
       </div>
 
-      <div className="flex gap-4 mt-8">
-        <button type="submit" className="btn btn-primary-alt flex-1 h-12">
-          {initialData ? 'Update' : 'Submit'}
+      <div className="flex gap-3 mt-4">
+        <button type="submit" className="btn-vibrant-primary flex-1">
+          {initialData ? 'Update' : 'Add'}
         </button>
-        <button type="button" onClick={handleReset} className="btn btn-secondary-alt flex-1 h-12">
+        <button type="button" onClick={handleReset} className="btn-vibrant-secondary px-4">
           Reset
         </button>
       </div>
 
       <style>{`
-        .form-control-light {
+        .form-control-compact {
           width: 100%;
-          padding: 0.6rem 0.75rem;
-          border: 1px solid #ddd;
-          border-radius: 4px;
+          padding: 0.5rem 0.75rem;
+          border: 1px solid #e5e7eb;
+          border-radius: 12px;
           background: #fff;
-          color: #333;
-          font-size: 0.9rem;
+          color: #1f2937;
+          font-size: 0.85rem;
           transition: all 0.2s;
         }
-        .form-control-light:focus {
+        .form-control-compact:focus {
           outline: none;
-          border-color: #3b82f6;
-          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+          border-color: #6366f1;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
-        .text-gray-700 { color: #4b5563; font-size: 0.85rem; }
-        .btn-primary-alt {
-          background: #3b82f6;
+        .btn-vibrant-primary {
+          background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
           color: white;
-          justify-content: center;
-          border-radius: 6px;
-          font-size: 0.9rem;
+          padding: 0.6rem;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 0.85rem;
+          box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+          transition: all 0.2s;
         }
-        .btn-primary-alt:hover {
-          background: #2563eb;
+        .btn-vibrant-primary:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 15px rgba(99, 102, 241, 0.3);
         }
-        .btn-secondary-alt {
-          background: #1f2937;
-          color: white;
-          justify-content: center;
-          border-radius: 6px;
-          font-size: 0.9rem;
+        .btn-vibrant-secondary {
+          background: #f3f4f6;
+          color: #4b5563;
+          padding: 0.6rem;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 0.85rem;
+          transition: all 0.2s;
         }
-        .btn-secondary-alt:hover {
-          background: #111827;
+        .btn-vibrant-secondary:hover {
+          background: #e5e7eb;
+          color: #1f2937;
         }
         .error-message {
           color: #ef4444;
-          font-size: 0.8rem;
-          margin-top: 0.25rem;
+          font-size: 0.75rem;
+          margin-top: 0.2rem;
+          margin-left: 0.25rem;
         }
       `}</style>
     </form>
